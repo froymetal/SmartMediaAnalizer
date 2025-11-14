@@ -8,25 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    // MARK: - Properties
-    /// ViewModel that handles image classification logic
-    @StateObject private var viewModel = ImageClassifierViewModel()
+    @StateObject private var viewModel = ImageClassifierViewModel() // ViewModel that handles image classification logic
+    @State private var showImagePicker = false // Controls if the gallery image picker is shown
+    @State private var showCameraPicker = false // Controls if the camera picker is shown
+    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary // Defines the source type for the picker
     
-    /// Controls if the gallery image picker is shown
-    @State private var showImagePicker = false
-    
-    /// Controls if the camera picker is shown
-    @State private var showCameraPicker = false
-    
-    /// Defines the source type for the picker
-    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
-    
-    // MARK: - Body
     var body: some View {
-        NavigationView {
-            VStack(spacing: 20) {
-                // MARK: - Image Display Area
-                // Area where the selected image is displayed
+        NavigationStack {
+            VStack {
+                // Selected image
                 if let image = viewModel.selectedImage {
                     Image(uiImage: image)
                         .resizable()
@@ -53,7 +43,6 @@ struct ContentView: View {
                         .padding(.horizontal)
                 }
                 
-                // MARK: - Classification Result
                 // Shows the classification result
                 if !viewModel.classificationResult.isEmpty {
                     VStack(spacing: 8) {
@@ -73,8 +62,7 @@ struct ContentView: View {
                     .padding(.horizontal)
                 }
                 
-                // MARK: - Error Message
-                // Shows error messages if any
+                // error messages if any
                 if let errorMessage = viewModel.errorMessage {
                     Text(errorMessage)
                         .foregroundColor(.red)
@@ -85,8 +73,7 @@ struct ContentView: View {
                         .padding(.horizontal)
                 }
                 
-                // MARK: - Loading Indicator
-                // Loading indicator while processing the image
+                // Loading indicator
                 if viewModel.isProcessing {
                     ProgressView("Processing image...")
                         .padding()
@@ -94,8 +81,6 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                // MARK: - Action Buttons
-                // Buttons to select image from gallery or camera
                 VStack(spacing: 15) {
                     // Button to select from gallery
                     Button(action: {
@@ -155,7 +140,6 @@ struct ContentView: View {
             .navigationTitle("Image Classifier")
             .navigationBarTitleDisplayMode(.inline)
         }
-        // MARK: - Sheet Modifiers
         // Presents the gallery image picker
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(

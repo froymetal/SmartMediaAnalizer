@@ -19,14 +19,10 @@ class ImageClassifierViewModel: ObservableObject {
 
     private var model: VNCoreMLModel? // CoreML model for classification
     
-    // MARK: - Initialization
     init() {
-        // Load the MobileNetV2 model when initializing the ViewModel
-        loadModel()
+        loadModel() // Load the MobileNetV2 (or any) model when initializing the ViewModel
     }
-    
-    // MARK: - Model Loading
-    /// Loads the MobileNetV2 model from the app bundle
+
     private func loadModel() {
         // Search for the model file in the bundle
         guard let modelURL = Bundle.main.url(forResource: "MobileNetV2", withExtension: "mlmodelc") ??
@@ -46,22 +42,19 @@ class ImageClassifierViewModel: ObservableObject {
         }
     }
     
-    // MARK: - Image Classification
-    /// Classifies the selected image using the CoreML model
+    // Classifies the selected image using the CoreML model
     func classifyImage() {
-        // Verify that there is a selected image
         guard let image = selectedImage else {
             errorMessage = "No image selected"
             return
         }
         
-        // Verify that the model is loaded
         guard let model = model else {
             errorMessage = "Model is not available"
             return
         }
         
-        // Indicate that processing is in progress
+        // var inicialization
         isProcessing = true
         errorMessage = nil
         classificationResult = ""
@@ -75,7 +68,7 @@ class ImageClassifierViewModel: ObservableObject {
         
         // Create a classification request with Vision
         let request = VNCoreMLRequest(model: model) { [weak self] request, error in
-            // Handle errors
+
             if let error = error {
                 DispatchQueue.main.async {
                     self?.errorMessage = "Classification error: \(error.localizedDescription)"
@@ -96,7 +89,6 @@ class ImageClassifierViewModel: ObservableObject {
             
             // Update the result on the main thread
             DispatchQueue.main.async {
-                // Format the result with the name and confidence
                 let confidence = Int(topResult.confidence * 100)
                 self?.classificationResult = "\(topResult.identifier)\n(\(confidence)% confidence)"
                 self?.isProcessing = false
@@ -119,8 +111,7 @@ class ImageClassifierViewModel: ObservableObject {
         }
     }
     
-    // MARK: - Image Management
-    /// Sets the selected image and automatically classifies it
+    // Sets the selected image and automatically classifies it
     func setImage(_ image: UIImage?) {
         selectedImage = image
         if image != nil {
@@ -130,7 +121,7 @@ class ImageClassifierViewModel: ObservableObject {
         }
     }
     
-    /// Clears the image and results
+    // Clears the variables
     func clearImage() {
         selectedImage = nil
         classificationResult = ""

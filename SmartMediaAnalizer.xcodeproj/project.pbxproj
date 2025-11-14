@@ -29,20 +29,42 @@
 		BF26C2792EC68F7D00A33B23 /* SmartMediaAnalizerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartMediaAnalizerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BFA6C1F02EC7AB9700ECA64C /* Exceptions for "SmartMediaAnalizer" folder in "SmartMediaAnalizer" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Tests/SmartMediaAnalizerTests/SmartMediaAnalizerTests.swift,
+				Tests/SmartMediaAnalizerUITests/SmartMediaAnalizerUITests.swift,
+				Tests/SmartMediaAnalizerUITests/SmartMediaAnalizerUITestsLaunchTests.swift,
+			);
+			target = BF26C2612EC68F7B00A33B23 /* SmartMediaAnalizer */;
+		};
+		BFA6C1F12EC7AB9700ECA64C /* Exceptions for "SmartMediaAnalizer" folder in "SmartMediaAnalizerTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Tests/SmartMediaAnalizerTests/SmartMediaAnalizerTests.swift,
+			);
+			target = BF26C26E2EC68F7D00A33B23 /* SmartMediaAnalizerTests */;
+		};
+		BFA6C1F22EC7AB9700ECA64C /* Exceptions for "SmartMediaAnalizer" folder in "SmartMediaAnalizerUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Tests/SmartMediaAnalizerUITests/SmartMediaAnalizerUITests.swift,
+				Tests/SmartMediaAnalizerUITests/SmartMediaAnalizerUITestsLaunchTests.swift,
+			);
+			target = BF26C2782EC68F7D00A33B23 /* SmartMediaAnalizerUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BF26C2642EC68F7B00A33B23 /* SmartMediaAnalizer */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BFA6C1F02EC7AB9700ECA64C /* Exceptions for "SmartMediaAnalizer" folder in "SmartMediaAnalizer" target */,
+				BFA6C1F12EC7AB9700ECA64C /* Exceptions for "SmartMediaAnalizer" folder in "SmartMediaAnalizerTests" target */,
+				BFA6C1F22EC7AB9700ECA64C /* Exceptions for "SmartMediaAnalizer" folder in "SmartMediaAnalizerUITests" target */,
+			);
 			path = SmartMediaAnalizer;
-			sourceTree = "<group>";
-		};
-		BF26C2722EC68F7D00A33B23 /* SmartMediaAnalizerTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SmartMediaAnalizerTests;
-			sourceTree = "<group>";
-		};
-		BF26C27C2EC68F7D00A33B23 /* SmartMediaAnalizerUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SmartMediaAnalizerUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -76,8 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				BF26C2642EC68F7B00A33B23 /* SmartMediaAnalizer */,
-				BF26C2722EC68F7D00A33B23 /* SmartMediaAnalizerTests */,
-				BF26C27C2EC68F7D00A33B23 /* SmartMediaAnalizerUITests */,
 				BF26C2632EC68F7B00A33B23 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +150,6 @@
 			dependencies = (
 				BF26C2712EC68F7D00A33B23 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				BF26C2722EC68F7D00A33B23 /* SmartMediaAnalizerTests */,
-			);
 			name = SmartMediaAnalizerTests;
 			packageProductDependencies = (
 			);
@@ -152,9 +169,6 @@
 			);
 			dependencies = (
 				BF26C27B2EC68F7D00A33B23 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				BF26C27C2EC68F7D00A33B23 /* SmartMediaAnalizerUITests */,
 			);
 			name = SmartMediaAnalizerUITests;
 			packageProductDependencies = (
